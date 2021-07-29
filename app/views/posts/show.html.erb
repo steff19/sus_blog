@@ -2,3 +2,7 @@
 
 <p><strong> Sus: </strong> <%= @post.title %></p>
 <p><strong> Update: </strong> <%= @post.description %></p>
+
+<%= link_to 'Delete',post_path(@post), method: :delete, data: { confirm: "You sure?"}%> |
+<%= link_to 'Edit',edit_post_path(@post)%> |
+<%= link_to 'Return to posts ',posts_path%> 
