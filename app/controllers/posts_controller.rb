@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
+    before_action :set_post, only: [:show, :edit, :destroy, :update]
+
     def show
-        @post = Post.find(params[:id])
     end
 
     def index
@@ -12,13 +13,12 @@ class PostsController < ApplicationController
         @post = Post.new
     end
 
-    def edit
-        @post = Post.find(params[:id])
+    def edit 
 
     end
 
     def create
-        @post = Post.new(params.require(:post).permit(:title, :description))
+        @post = Post.new(post_params)
         if @post.save
             flash[:notice] = "Post Was Successfully Saved"
         redirect_to @post
@@ -28,8 +28,7 @@ class PostsController < ApplicationController
     end
 
     def update
-        @post = Post.find(params[:id])
-       if @post.update(params.require(:post).permit(:title, :description))
+       if @post.update(post_params)
             flash[:notice] = "Edit Successful"
         redirect_to @post
        else
@@ -39,11 +38,18 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        @post = Post.find(params[:id])
         @post.destroy
         redirect_to posts_path
 
     end
 
+private
 
+def set_post
+    @post = Post.find(params[:id])
+end
+
+def post_params
+    params.require(:post).permit(:title, :description)
+end
 end
