@@ -1,50 +1,22 @@
-<h1 class= "text-center">Post Feed</h1>
+
+<h1 class= "text-center mt-4">Post Feed</h1>
+<% @posts.each do |post| %>
+    <div class ="row justify-content-md-center" >
+    <div class ="col-8 mt-4">
 <div class="container">
-<div class="card" style="width: 18rem;">
+<div class="card text-center shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title"><%=post.title %></h5>
+    <p class="card-text"><%=post.description %></p>
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
+    <a href="#" class="card-link">Another one link</a>
   </div>
 </div>
     </div>
-  
-
     </div>
 </div>
-<table>
-    <thead>
-        <tr>
-            <th>
-            Stat Us
-            </th>
-            <th>
-            Update
-            </th>
-            <th colspan = "3">
-            Options
-            </th>
-        </tr>
-    </thead>
-    <tbody> 
-    <% @posts.each do |post| %>
-        <tr>
-            <td> <%=post.title %></td>
-            <td>  <%=post.description %> </td>
-            <td><%= link_to 'Delete',post_path(post), method: :delete, data: { confirm: "You sure?"} %></td>
-            <td><%= link_to 'Show',post_path(post)%></td>
-            <td><%= link_to 'Edit',edit_post_path(post)%></td>
+</div>
+<div class ="row">
+<% end%>
 
-
-        </tr>
-        
-        <% end%>
-
-    </tbody>
-</table>
-
-<p>
-<td><%= link_to 'New Post',new_post_path%></td>
-</p>
