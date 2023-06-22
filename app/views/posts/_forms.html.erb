@@ -1,3 +1,4 @@
+<div class  = "container">
 <% if @post.errors.any? %>
 <h2>The following error or errors occured</h2>
 <ul>
@@ -6,20 +7,31 @@
   <% end %>
 </ul>
 <% end %>
+<div class= "row justify-content-center">
+<div class = "col-10">
+<%= form_with( model: @post, class:"shadow-p-3 mb-5 bg-info rounded", local: true) do |f| %>
+  <div class= "form-group row">
+<%= f.label :title, class: "col-2 col-form-label"%> 
+<div class = "col-10">
+<%=  f.text_field :title, class: "form-control"%>
+</div>
+</div>
 
-<%= form_with( model: @post, local: true) do |f| %>
-<p>
-<%= f.label :title%> </br>
-<%=  f.text_field :title%>
-</p>
+<div class= "form-group row">
+<%= f.label :description, class: "col-2 col-form-label"%> 
+<div class = "col-10">
+<%=  f.text_area :description, rows: 5, class: "form-control"%>
+</div>
+</div>
 
-<p>
-<%= f.label :description%> </br>
-<%=  f.text_area :description%>
-</p>
-
-<p>
-<%= f.submit%>
-</p>
+<div class= "form-group row justify-content-center">
+<div class = "container ml-5">
+<%= f.submit class: "btn btn-outline-dark btn-sm"%>
+</div>
+</div>
 
 <%end%>
+</div>
+<%= link_to 'Return to posts ',posts_path%> 
+</div>
+</div>
