@@ -1,6 +1,10 @@
 
 <h1 class= "text-center mt-4">Post Feed</h1>
-
+<div class="apple_pagination">
+    <%= will_paginate @posts, :container => false %>
+  </div>
 <%= render 'post' %>
-
+<div class="apple_pagination">
+    <%= will_paginate @posts, :container => false %>
+  </div>
 
